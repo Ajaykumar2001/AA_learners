@@ -8,7 +8,7 @@ class BankCustomer{
         string adharNumber;
         string panNumber;
         string emailId;
-        char* phoneNumber;
+        const char* phoneNumber;
     
     public:
     //Compile Time Polymorphism , constructor Overloading
@@ -26,7 +26,7 @@ class BankCustomer{
         this->adharNumber=adharNumberArg;
         this->panNumber=panNumberArg;
     }
-     BankCustomer(char* phoneArg,string emailArg): BankCustomer(name,adharNumber,panNumber)
+     BankCustomer(string nameArg,string adharNumberArg,string panNumberArg,const char* phoneArg,string emailArg): BankCustomer(nameArg,adharNumberArg,panNumberArg)
      {
         this->phoneNumber=phoneArg;
         this->emailId=emailArg;
@@ -57,7 +57,7 @@ int main() {
     BankCustomer customerOne("Name: Ajay","AdhaarNumber : 789456123789","PanNumber : AJY789798");
     customerOne.printCustomerInfo();
     cout<<"------customerTwo-----------"<<endl;
-    BankCustomer customerTwo("7897897897","aja@7899.com");
+    BankCustomer customerTwo("Name: Ajay","AdhaarNumber : 789456123789","PanNumber : AJY789798","7897897897","Email : aja@7899.com");
     customerTwo.printCustomerInfo();
 
     return 0;
