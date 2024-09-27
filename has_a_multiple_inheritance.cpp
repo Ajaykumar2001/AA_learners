@@ -63,24 +63,34 @@ class PrintScanner
         cout<<"Setting Scanner"<<endl;
         this->scannerObj=scannerAddress;
     }
+    void print(string content)
+    {
+        printerObj->print(content);
+    }
+    void scan(string content)
+    {
+        scannerObj->scan(content);
+    }
     ~PrintScanner(){ cout<<" PrintScanner Destructor. "<<endl; }
 };
 int main()
 {
-    cout<<"---------------------------------"<<endl;
-    Printer printerObj("Ajay","MAC");
-    printerObj.print("FROM PRINTER");
-    cout<<"---------------------------------"<<endl;
+    // cout<<"---------------------------------"<<endl;
+    // Printer printerObj("Ajay","MAC");
+    // printerObj.print("FROM PRINTER");
+    // cout<<"---------------------------------"<<endl;
 
-    Scanner scannerObj("Ajay","MAC");
-    scannerObj.scan("FROM SCANNER");
-    cout<<"---------------------------------"<<endl;
+    // Scanner scannerObj("Ajay","MAC");
+    // scannerObj.scan("FROM SCANNER");
+    // cout<<"---------------------------------"<<endl;
 
     PrintScanner printScannerObj("Ajay","MAC");
-    printScannerObj.setPrinter(&printerObj);
-    printScannerObj.setScanner(&scannerObj);
-    cout<<"---------------------------------"<<endl;
-    PrintScanner printScannerObjFromConstructorInjection(&printerObj, &scannerObj);
-    cout<<"---------------------------------"<<endl;
+    printScannerObj.print("Hello Printer");
+    printScannerObj.scan("Hello Scanner");
+    // printScannerObj.setPrinter(&printerObj);
+    // printScannerObj.setScanner(&scannerObj);
+    // cout<<"---------------------------------"<<endl;
+    // PrintScanner printScannerObjFromConstructorInjection(&printerObj, &scannerObj);
+    // cout<<"---------------------------------"<<endl;
     return 0;
 }
