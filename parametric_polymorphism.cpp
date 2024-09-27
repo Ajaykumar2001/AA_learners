@@ -23,7 +23,7 @@ class DynamicArray {
         } else {
             // If the array is full, create a new array with increased size
             size += 1;
-            int *newArr = new ItemType[size]; 
+            ItemType *newArr = new ItemType[size]; 
             for(int i = 0; i < size - 1; i++) {
                 newArr[i] = arr[i]; // Copy elements to the new array
             }
@@ -44,8 +44,10 @@ class DynamicArray {
     ItemType operator[](int indexArg) {
         return this->arr[indexArg]; // Return the element at the given index
     }
-    friend std::ostream& operator<<(std::ostream& os, const DynamicArray<ItemType>& operand2);
+    template<typename T>
+    friend std::ostream& operator<<(std::ostream& os, const DynamicArray<T>& operand2);
 };
+template<typename ItemType>
 std::ostream& operator<<(std::ostream& os, const DynamicArray<ItemType>& printobj){
     for(int i = 0; i < printobj.size; i++) {
         os << printobj.arr[i] << " "; // Print each element
@@ -54,20 +56,25 @@ std::ostream& operator<<(std::ostream& os, const DynamicArray<ItemType>& printob
 }
 // Main function
 int main() {
-    DynamicArray Integernumbers(2); // Create a DynamicArray object with size 2
+    DynamicArray<int> Integernumbers(2); // Create a DynamicArray object with size 2
     Integernumbers.add(10);
     Integernumbers.add(20); 
     Integernumbers.add(30);
-    DynamicArray Floatnumbers(2); // Create a DynamicArray object with size 2
+    DynamicArray<float> Floatnumbers(2); // Create a DynamicArray object with size 2
     Floatnumbers.add(10);
     Floatnumbers.add(20); 
     Floatnumbers.add(30); 
 
 
     // Access the element at index 1
-    int value = numbers[1];
-    cout<<"value : "<<value<<endl;
-    cout<<numbers<<endl;
+    int valueInteger = Integernumbers[1];
+    cout<<"value of integer : "<<valueInteger<<endl;
+    cout<<Integernumbers<<endl;
+
+        // Access the element at index 1
+    int valueFloat = Floatnumbers[1];
+    cout<<"value of float : "<<valueFloat<<endl;
+    cout<<Floatnumbers<<endl;
 
     return 0;
 }
